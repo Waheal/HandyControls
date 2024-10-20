@@ -193,7 +193,7 @@ namespace HandyControl.Controls
 
         public static readonly DependencyProperty NonClientAreaHeightProperty = DependencyProperty.Register(
             nameof(NonClientAreaHeight), typeof(double), typeof(Window),
-            new PropertyMetadata(22.0));
+            new PropertyMetadata(30.0));
 
         public double NonClientAreaHeight
         {
@@ -441,7 +441,8 @@ namespace HandyControl.Controls
                     {
                         if ((int) wparam == InteropValues.SC_MAXIMIZE || (int) wparam == InteropValues.SC_RESTORE)
                         {
-                            handled = true;
+                            if (WindowState != WindowState.Minimized)
+                                handled = true;
                         }
                     }
                     if (!ShowMinButton)
